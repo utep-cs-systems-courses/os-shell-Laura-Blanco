@@ -1,0 +1,11 @@
+make
+myPipes.py
+myPipes.py~
+myReadline.py
+myRedirect.py
+myRedirect.py~
+myShell.py
+myShell.py~
+__pycache__
+testShell.sh
+tmp

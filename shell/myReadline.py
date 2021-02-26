@@ -10,7 +10,6 @@ def getChar():
     if Index == buf:
         Index = 0
         buf = read(0,1000) #fills array with input from keyboard
-
         if buf == 0: #if there is nothing then end of file has been reached
             return None
     if Index < len(buf) -1: #checks to make sure the index is still in bounds
