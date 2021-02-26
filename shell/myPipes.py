@@ -32,6 +32,8 @@ def pipe(args):
         execution(right)
         os.write(2,( "Couldn't execute : (").encode())
         sys.exit(1)
+
+
 def execution(args):
     for dir in re.split(":", os.environ["PATH"]):
         program = "%s/%s" % (dir,args[0])

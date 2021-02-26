@@ -15,7 +15,7 @@ def redirect(args):
         os.set_inheritable(0,True)
 
         args.remove(args[args.index('<')+1])
-        args.remove('<')
+        args.remove('<')  #remove what we have already used 
 
     for dir in re.split(':', os.environ['PATH']):
         program = '%s/%s' % (dir,args[0])

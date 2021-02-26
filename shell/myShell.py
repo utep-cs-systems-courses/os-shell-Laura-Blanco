@@ -3,7 +3,7 @@ from myReadline import readLine
 from myRedirect import redirect
 from myPipes import pipe
 
-pid = os.getpid()
+#xpid = os.getpid()
 
 while 1:
     if 'PS1' in os.environ:
@@ -18,7 +18,7 @@ while 1:
     
     args = Input.split(' ') 
 
-    if args[0] == "exit":
+    if args[0] == "exit": #chceks first index of args if its exit we get out 
         os.write(2, "Exiting\n".encode())
         sys.exit(0)
         
@@ -26,18 +26,18 @@ while 1:
         os.write(1, (os.getcwd() + "\n").encode())
     elif args[0] == "cd":
        try:
-           if len(args) < 2:
+           if len(args) < 2: #nothing was input if length is less than 2 
                continue
            else:
-               os.chdir(args[1])
+               os.chdir(args[1])  #change directory
        except:
            pass
     else:
         rc = os.fork()
-        if rc < 0:
+        if rc < 0: #invalid fork
             os.write(2, ("fork failed, returning %d\n" %rc).encode())
             sys.exit(1)
-        elif rc == 0:
+        elif rc == 0:   #child
             if '|' in args:
                 pipe(args)
             if '<' in args or '>' in args:  #we will redirect
@@ -52,7 +52,7 @@ while 1:
                         pass
                 os.write(2,('Child: failed exec %s\n' % args[0]).encode())
                 sys.exit(1)  #terminate with error
-        else:
+        else: #parent waits for child to finish
             childPidCode = os.wait()
             
                         
